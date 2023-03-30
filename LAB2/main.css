@@ -1,0 +1,52 @@
+body{
+  background-color: rgb(246, 193, 202);
+  color: white;
+  font-size: 20px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+h1{
+  color:white;
+  font-family:snell 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 1px;
+  border-style: ridge;
+  border-color: white;
+  border-width: thick;
+  padding: 5px;
+  margin: 30px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.topic{
+  height: auto;
+  font-weight: bold;
+  margin: 1px;
+  border-style: ridge;
+  border-width: thick;
+  padding: 5px;
+  margin-left: 500px;
+  margin-right: 500px;
+  border-color: black;
+  color: white;
+}
+
+.submit{
+  background-color: cyan;
+  padding: 10px;
+  
+  
+}
+
+.reset{
+  background-color: royalblue;
+  padding: 10px;
+  border-style: dotted;
+  color: white;
+}
+
+
+
+
+
