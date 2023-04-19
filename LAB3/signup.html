@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Signup page</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        
+    </head>
+    <body>
+        <h1 class="lab2">EUPHORIA</h1>
+        <p>
+            <a class="link1" href="https://2022148041.github.io/HomeworkRepository/LAB3/index.html">Main page</a>
+            <a href = "https://2022148041.github.io/HomeworkRepository/LAB3/login.html">Login</a>
+            <a href = "#signup">Signup</a>
+
+        </p>
+        <hr>
+
+        
+        <p class="topic">PERSONAL INFO(REQUIRED)</p>
+        <form method="post" action="signup.html">
+
+            <p><label>Name:
+                <input  name = "name" type = "text" size = "25" id=signup placeholder="Enter your name" autocomplete="on" autofocus>
+            </label></p>
+
+            <p class="date"><label>DOB:
+                <input name="date" type="date"  required>
+            </label></p>
+
+            <p class="year"><label>Student Year:
+                <input name="number" type="number" min="1" max="4" step="1" value="1">
+            </label></p>
+
+            <p class="mail"><label>Email:
+                <input name = "email" type = "email" placeholder = "name@domain.com" autocomplete="on" >
+            </label></p>
+
+            <p class="phone"><label>Contact info:
+                <input type="tel" placeholder="(###)###-####" pattern = "\(\d{3}\) \d{3}-\d{4}">
+            </label></p>
+
+            <p class="line"><label>Telco:<br>
+                <input type="radio"  name="telco" value="SK telecom"><label>SK telecom</label><br>
+                <input type="radio"  name="telco" value="KT"> <label>KT</label><br>
+                <input type="radio"  name="telco" value="LG U+"><label>LG U+</label>
+            </label></p>
+
+            <p class="username"><label>User ID:
+                <input type="text" size = "25" placeholder="Enter your ID" >
+            </label></p>
+
+            <p class="pw"><label>Password:
+                <input type="password" id="pwd" name="pwd" placeholder="Enter your password" >
+            </label></p>
+
+            <p class="pw"><label>Check password:
+                <input type="password" id="pwd" name="pwd" placeholder="Check your password">
+            </label></p>
+
+            <p class="ad"><label>How did you hear about our website?:<br>
+                <input type="checkbox" name="media" value="Social media"><label>Social media</label><br>
+                <input type="checkbox" name="media" value="News"><label>News</label><br>
+                <input type="checkbox" name="media" value="Other"><label>Other</label>
+            </label></p>
+
+            <p>
+                <input class="submit" type="submit" value="Signup">
+                <input class="reset" type="reset" value="Cancel">
+            </p>
+
+        <hr>    
+    </body>
+</html>
