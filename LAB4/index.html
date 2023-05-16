@@ -58,20 +58,40 @@
             <div id="products-container"></div>
             <script>
                 document.getElementById('filterRequestButton').addEventListener('click', function(){
+                    const categoryFilter = document.getElementById('category').value;
+                    const searchFilter = document.getElementById('search').value.toLowerCase();
+                    const sortFilter = document.getElementById('sort').value;
+
+
                     fetch('https://2022148041.github.io/HomeworkRepository/LAB4/product.json')
                         .then(response => response.json())
                         .then(data => {
-                            const productsContainer = document.getElementById('products-container');
-                            productsContainer.innerHTML = '';
+                            let filteredData = data.filter(product => {
+                                if (categoryFilter !== 'category1' && product.name.toLowerCase() !== categoryFilter) {
+                                    return false;
+                                }
+                                if (searchFilter && !product.name.toLowerCase().includes(searchFilter)) {
+                                    return false;
+                                }
+                                return true;
+                            });
 
-                        
-                            data.forEach(product => {
+            
+                            if (sortFilter === 'sort2') {
+                                filteredData.sort((a, b) => b.price - a.price);
+                            }
+
+                            const productsContainer = document.getElementById('products-container');
+                            productsContainer.innerHTML = ''; // Clear previous results
+
+            
+                            filteredData.forEach(product => {
                                 const productElement = document.createElement('div');
                                 productElement.innerHTML = `
-                                <h3>${product.name}</h3>
-                                <p>Type: ${product.type}</p>
-                                <p>Description: ${product.description}</p>
-                                <p>Price: $${product.price}</p>`;
+                                    <h3>${product.name}</h3>
+                                    <p>Type: ${product.type}</p>
+                                    <p>Description: ${product.description}</p>
+                                    <p>Price: $${product.price}</p>`;
                                 productsContainer.appendChild(productElement);
                             });
                         })
