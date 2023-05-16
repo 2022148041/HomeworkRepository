@@ -67,10 +67,10 @@
                         .then(response => response.json())
                         .then(data => {
                             let filteredData = data.filter(product => {
-                                if (categoryFilter !== 'category1' && product.name !== categoryFilter) {
+                                if (categoryFilter !== 'category1' && product.name.toLowerCase() !== categoryFilter.toLowerCase()) {
                                     return false;
                                 }
-                                if (searchFilter && !product.name.toLowerCase().includes(searchFilter)) {
+                                if (searchFilter && !product.name.toLowerCase().includes(searchFilter.toLowerCase())) {
                                     return false;
                                 }
                                 return true;
