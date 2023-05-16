@@ -1,0 +1,20 @@
+[
+    {
+      "name": "Moonlight",
+      "type": "lamp",
+      "description": "A beautiful moon-shaped lamp for a cozy ambiance.",
+      "price": 59.99
+    },
+    {
+      "name": "Living Room Light",
+      "type": "light fixture",
+      "description": "Elegant light fixture for your living room.",
+      "price": 79.99
+    },
+    {
+      "name": "Basic Lamp",
+      "type": "lamp",
+      "description": "A simple and functional lamp for everyday use.",
+      "price": 39.99
+    }
+  ]
