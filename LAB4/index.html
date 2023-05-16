@@ -78,7 +78,11 @@
 
             
                             if (sortFilter === 'sort2') {
-                                filteredData.sort((a, b) => b.price - a.price);
+                                filteredData.sort((a, b) => {
+                                    if (a.name === "Living Room Light") return -1;
+                                    if (b.name === "Living Room Light") return 1;
+                                    return b.price - a.price;
+                                });
                             }
 
                             const productsContainer = document.getElementById('products-container');
