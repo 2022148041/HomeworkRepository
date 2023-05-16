@@ -5,28 +5,7 @@
             <meta charset="utf-8">
             <link rel="stylesheet" type="text/css" href="main.css">
             <title>E-commerce main page</title>
-            <script>
-                document.getElementById('filterRequestButton').addEventListener('click', function(){
-                    fetch('https://2022148041.github.io/HomeworkRepository/LAB4/product.json')
-                        .then(response => response.json())
-                        .then(data => {
-                            const productsContainer = document.getElementById('products-container');
-                            productsContainer.innerHTML = '';
-
-                        
-                            data.forEach(product => {
-                                const productElement = document.createElement('div');
-                                productElement.innerHTML = `
-                                <h3>${product.name}</h3>
-                                <p>Type: ${product.type}</p>
-                                <p>Description: ${product.description}</p>
-                                <p>Price: $${product.price}</p>`;
-                                productsContainer.appendChild(productElement);
-                            });
-                        })
-                        .catch(error => console.error('Error:', error));
-                })
-            </script>
+            
         </head>
         
         <body>
@@ -77,6 +56,28 @@
 
             </div>
             <div id="products-container"></div>
+            <script>
+                document.getElementById('filterRequestButton').addEventListener('click', function(){
+                    fetch('https://2022148041.github.io/HomeworkRepository/LAB4/product.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const productsContainer = document.getElementById('products-container');
+                            productsContainer.innerHTML = '';
+
+                        
+                            data.forEach(product => {
+                                const productElement = document.createElement('div');
+                                productElement.innerHTML = `
+                                <h3>${product.name}</h3>
+                                <p>Type: ${product.type}</p>
+                                <p>Description: ${product.description}</p>
+                                <p>Price: $${product.price}</p>`;
+                                productsContainer.appendChild(productElement);
+                            });
+                        })
+                        .catch(error => console.error('Error:', error));
+                })
+            </script>
             
             
                     
