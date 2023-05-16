@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <div class="container">
+        <head>
+            <meta charset="utf-8">
+            <link rel="stylesheet" type="text/css" href="main.css">
+            <title>E-commerce main page</title>
+            <script>
+                fetch('products.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const productsContainer = document.getElementById('products-container');
+
+                        // Iterate over the products and create HTML elements to display them
+                        data.forEach(product => {
+                            const productElement = document.createElement('div');
+                            productElement.innerHTML = `
+                            <h3>${product.name}</h3>
+                            <p>Type: ${product.type}</p>
+                            <p>Description: ${product.description}</p>
+                            <p>Price: $${product.price}</p>`;
+                            productsContainer.appendChild(productElement);
+                        });
+                    })
+                    .catch(error => console.error('Error:', error));
+            </script>
+        </head>
+        
+        <body>
+            
+            <header>
+                <h1 class="topicOfMain">Hello! Welcome to EUPHORIA</h1>
+            </header>
+            
+            <div class="links">
+                <a class="link1" id="main-click" href="https://2022148041.github.io/HomeworkRepository/LAB4/index.html">Main page</a>
+                <a class="link2" href="https://2022148041.github.io/HomeworkRepository/LAB4/login.html">Login</a>
+                <a class="link3" href="https://2022148041.github.io/HomeworkRepository/LAB4/signup.html">Signup</a>
+            </div>
+            <hr class="line">
+
+            
+            <header>
+                <h2>Products</h2>
+            </header>
+            <hr>
+
+            <div class="filters">
+                <label for="category">Choose a category:</label>
+                <select id="category">
+                    <option value="category1" selected>All</option>
+                    <option value="category2">Moonlight</option>
+                    <option value="category3">Basic lamp</option>
+                    <option value="category4">Living room light</option>
+                </select>
+                <br>
+                <br>
+
+                <label for="search">Enter search item:</label>
+                <input type="text" id="search" placeholder="e.g Moonlight">
+                
+                <br>
+                <br>
+
+                <label for="search">Choose a sort:</label>
+                <select id="sort">
+                    <option value="sort1" selected>None</option>
+                    <option value="sort2">Price (highest-lowest)</option>
+                </select>
+                <br>
+                <br>
+
+                <input type="button" value="Filter results" id="filterRequestButton">
+
+            </div>
+            <div id="products-container"></div>
+            
+            
+                    
+        </body>
+    </div>
+</html>
