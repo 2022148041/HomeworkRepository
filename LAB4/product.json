@@ -3,18 +3,22 @@
       "name": "Moonlight",
       "type": "lamp",
       "description": "A beautiful moon-shaped lamp for a cozy ambiance.",
-      "price": 59.99
+      "price": 59.99,
+      "links": ["https://rukminim1.flixcart.com/image/416/416/k4ss2a80/table-lamp/a/t/v/stylish-moon-light-3d-crystal-ball-night-light-for-room-night-original-imafnmnfugsgnqzz.jpeg?q=70", "https://m.media-amazon.com/images/I/714bdeX7h+L.jpg", "https://ae01.alicdn.com/kf/HTB12BxTTyrpK1RjSZFhq6xSdXXaR.jpg"]
     },
     {
       "name": "Living room light",
       "type": "light fixture",
       "description": "Elegant light fixture for your living room.",
-      "price": 79.99
+      "price": 79.99,
+      "links":["https://cdn.apartmenttherapy.info/image/upload/v1613233495/at/art/photo/2021-02/Clean-Light-Bulbs/Apartment-Therapy-2021-Light-Bulbs-1.jpg", "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-lighting-ideas-window-seats-20190603-tamsin-tivolird-002-copy-1579109953.jpg", "https://cdn.thewirecutter.com/wp-content/uploads/2017/09/floor-lamps-lowres-4160.jpg"]
     },
     {
       "name": "Basic lamp",
       "type": "lamp",
       "description": "A simple and functional lamp for everyday use.",
-      "price": 39.99
+      "price": 39.99,
+      "links": ["https://rukminim1.flixcart.com/image/312/312/l3xcr680/table-lamp/n/m/u/gray-chrome-13-basic-table-lamp-with-fabric-shade-bedside-light-original-imagexqtmmfyz2ee.jpeg?q=70", "https://www.livingspaces.com/globalassets/productassets/200000-299999/280000-289999/287000-287999/287200-287299/287255/287255_multicolor_metal_table_lamp_signature_02.jpg?w=415&h=280&mode=pad", "https://www.homesake.in//media/catalog/product/cache/1/image/800x1000/624129f8d7084d5afbec89e8ab5a5fd1/i/h/ih0e162_white_5.jpg"]
     }
+
   ]

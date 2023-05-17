@@ -307,7 +307,17 @@ body{
 .filters{
     font-size: 15px;
     max-width: 200px;
+    float: left;
+    padding-right: 20px;
 }
+
+
+
+#products-container {
+    float: left;
+}
+
+
   
   
   

@@ -55,28 +55,26 @@
                 <input type="button" value="Filter results" id="filterRequestButton">
 
             </div>
+            
+
+            <div id="imageContainer"></div>
             <div id="products-container"></div>
             <script>
-                document.getElementById('filterRequestButton').addEventListener('click', function(){
+                function updateResults() {
                     const categoryFilter = document.getElementById('category').value;
                     const searchFilter = document.getElementById('search').value.toLowerCase();
                     const sortFilter = document.getElementById('sort').value;
-
-
+            
                     fetch('https://2022148041.github.io/HomeworkRepository/LAB4/product.json')
                         .then(response => response.json())
                         .then(data => {
-                            let filteredData = data.filter(product => {
-                                if (categoryFilter !== 'category1' && product.name.toLowerCase() !== categoryFilter.toLowerCase()) {
-                                    return false;
-                                }
+                            let filteredData = data.filter(product => {      
                                 if (searchFilter && !product.name.toLowerCase().includes(searchFilter.toLowerCase())) {
                                     return false;
-                                }
+                                }               
                                 return true;
                             });
-
-            
+                            
                             if (sortFilter === 'sort2') {
                                 filteredData.sort((a, b) => {
                                     if (a.name === "Living Room Light") return -1;
@@ -85,11 +83,24 @@
                                 });
                             }
 
+                            
                             const productsContainer = document.getElementById('products-container');
-                            productsContainer.innerHTML = ''; // Clear previous results
-
-            
-                            filteredData.forEach(product => {
+                            productsContainer.innerHTML = ''; // Clear results before updating
+                            
+                            if (categoryFilter === 'category1') {
+                                for (let i = 0; i < filteredData.length; i++) {
+                                    const product = filteredData[i];
+                                    const productElement = document.createElement('div');
+                                    productElement.innerHTML = `
+                                        <h3>${product.name}</h3>
+                                        <p>Type: ${product.type}</p>
+                                        <p>Description: ${product.description}</p>
+                                        <p>Price: $${product.price}</p>`;
+                                    productsContainer.appendChild(productElement);
+                                }
+                            } 
+                            if (categoryFilter === 'category2') {
+                                const product = filteredData[0];
                                 const productElement = document.createElement('div');
                                 productElement.innerHTML = `
                                     <h3>${product.name}</h3>
@@ -97,10 +108,52 @@
                                     <p>Description: ${product.description}</p>
                                     <p>Price: $${product.price}</p>`;
                                 productsContainer.appendChild(productElement);
-                            });
+                            }
+                            if (categoryFilter === 'category3') {
+                                const product = filteredData[2];
+                                const productElement = document.createElement('div');
+                                productElement.innerHTML = `
+                                    <h3>${product.name}</h3>
+                                    <p>Type: ${product.type}</p>
+                                    <p>Description: ${product.description}</p>
+                                    <p>Price: $${product.price}</p>`;
+                                productsContainer.appendChild(productElement);
+                            }
+                            if (categoryFilter === 'category4') {
+                                const product = filteredData[1];
+                                const productElement = document.createElement('div');
+                                productElement.innerHTML = `
+                                    <h3>${product.name}</h3>
+                                    <p>Type: ${product.type}</p>
+                                    <p>Description: ${product.description}</p>
+                                    <p>Price: $${product.price}</p>`;
+                                productsContainer.appendChild(productElement);
+                            }
+                            let container = document.getElementById("imageContainer");
+                            let links = data[1].links;
+
+                            links.forEach(function(link){
+                                let img= document.createElement("img");
+                                img.src = link;
+                                container.appendChild(img);
+                            })
+                            
+
+                            
+      
+
+
+                            
                         })
                         .catch(error => console.error('Error:', error));
-                })
+                }
+            
+                
+                updateResults();
+            
+                document.getElementById('filterRequestButton').addEventListener('click', updateResults);
+            
+                
             </script>
             
             
