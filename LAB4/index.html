@@ -55,10 +55,10 @@
                 <input type="button" value="Filter results" id="filterRequestButton">
 
             </div>
-            
-
-            <div id="imageContainer"></div>
-            <div id="products-container"></div>
+            <div id="productIn_IMG">
+                <div id="imageContainer"></div>
+                <div id="products-container"></div>
+            </div>
             <script>
                 function updateResults() {
                     const categoryFilter = document.getElementById('category').value;
@@ -83,7 +83,7 @@
                                 });
                             }
 
-                            
+                            let container = document.getElementById("imageContainer");
                             const productsContainer = document.getElementById('products-container');
                             productsContainer.innerHTML = ''; // Clear results before updating
                             
@@ -91,6 +91,7 @@
                                 for (let i = 0; i < filteredData.length; i++) {
                                     const product = filteredData[i];
                                     const productElement = document.createElement('div');
+
                                     productElement.innerHTML = `
                                         <h3>${product.name}</h3>
                                         <p>Type: ${product.type}</p>
@@ -98,6 +99,21 @@
                                         <p>Price: $${product.price}</p>`;
                                     productsContainer.appendChild(productElement);
                                 }
+                                container.innerHTML = '';
+
+                                for (let i = 0; i < 3; i++){
+                                    let links = filteredData[i].links;
+                                    
+
+                                    links.forEach(function(link){
+                                        const img= document.createElement("img");
+                                        img.src = link;
+                                        container.appendChild(img);
+
+                                        
+                                    })
+                                }
+
                             } 
                             if (categoryFilter === 'category2') {
                                 const product = filteredData[0];
@@ -108,6 +124,15 @@
                                     <p>Description: ${product.description}</p>
                                     <p>Price: $${product.price}</p>`;
                                 productsContainer.appendChild(productElement);
+                                let links = filteredData[0].links;
+
+                                container.innerHTML = '';
+
+                                links.forEach(function(link){
+                                    const img= document.createElement("img");
+                                    img.src = link;
+                                    container.appendChild(img);
+                                })
                             }
                             if (categoryFilter === 'category3') {
                                 const product = filteredData[2];
@@ -118,6 +143,14 @@
                                     <p>Description: ${product.description}</p>
                                     <p>Price: $${product.price}</p>`;
                                 productsContainer.appendChild(productElement);
+                                
+                                let links = filteredData[2].links;
+                                container.innerHTML = '';
+                                links.forEach(function(link){
+                                    const img= document.createElement("img");
+                                    img.src = link;
+                                    container.appendChild(img);
+                                })
                             }
                             if (categoryFilter === 'category4') {
                                 const product = filteredData[1];
@@ -128,27 +161,21 @@
                                     <p>Description: ${product.description}</p>
                                     <p>Price: $${product.price}</p>`;
                                 productsContainer.appendChild(productElement);
-                            }
-                            let container = document.getElementById("imageContainer");
-                            let links = data[1].links;
+                                let links = filteredData[1].links;
+                                container.innerHTML = '';
 
-                            links.forEach(function(link){
-                                let img= document.createElement("img");
-                                img.src = link;
-                                container.appendChild(img);
-                            })
-                            
-
-                            
-      
-
-
-                            
+                                links.forEach(function(link){
+                                    const img= document.createElement("img");
+                                    img.src = link;
+                                    container.appendChild(img);
+                                })
+                            } 
                         })
                         .catch(error => console.error('Error:', error));
+
+                    
                 }
-            
-                
+    
                 updateResults();
             
                 document.getElementById('filterRequestButton').addEventListener('click', updateResults);
