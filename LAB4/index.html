@@ -88,33 +88,33 @@
                             productsContainer.innerHTML = ''; // Clear results before updating
                             
                             if (categoryFilter === 'category1') {
-                                for (let i = 0; i < filteredData.length; i++) {
-                                    const product = filteredData[i];
-                                    const productElement = document.createElement('div');
-
-                                    productElement.innerHTML = `
-                                        <h3>${product.name}</h3>
-                                        <p>Type: ${product.type}</p>
-                                        <p>Description: ${product.description}</p>
-                                        <p>Price: $${product.price}</p>`;
-                                    productsContainer.appendChild(productElement);
-                                }
+                                
                                 container.innerHTML = '';
 
                                 for (let i = 0; i < 3; i++){
                                     let links = filteredData[i].links;
-                                    
 
                                     links.forEach(function(link){
-                                        const img= document.createElement("img");
+                                        const img = document.createElement("img");
+
                                         img.src = link;
                                         container.appendChild(img);
-
-                                        
+    
                                     })
-                                }
 
-                            } 
+                                    for (let i = 0; i < filteredData.length; i++) {
+                                        const product = filteredData[i];
+                                        const productElement = document.createElement('div');
+
+                                        productElement.innerHTML = `
+                                            <h3>${product.name}</h3>
+                                            <p>Type: ${product.type}</p>
+                                            <p>Description: ${product.description}</p>
+                                            <p>Price: $${product.price}</p>`;
+                                        productsContainer.appendChild(productElement);
+                                    }
+                                }    
+                            }       
                             if (categoryFilter === 'category2') {
                                 const product = filteredData[0];
                                 const productElement = document.createElement('div');
