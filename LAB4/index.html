@@ -60,14 +60,19 @@
                 <div id="products-container"></div>
             </div>
             <script>
-                function updateResults() {
+                let currentPage = 1;
+                function updateResults(page) {
                     const categoryFilter = document.getElementById('category').value;
                     const searchFilter = document.getElementById('search').value.toLowerCase();
                     const sortFilter = document.getElementById('sort').value;
             
-                    fetch('https://2022148041.github.io/HomeworkRepository/LAB4/product.json')
+                    fetch('https://2022148041.github.io/HomeworkRepository/LAB4/product.json?page=${page}')
                         .then(response => response.json())
                         .then(data => {
+                            if (data.length === 0) {
+                                document.getElementById('filterRequestButton').removeEventListener('click', updateResults);
+                                return;
+                            }
                             let filteredData = data.filter(product => {      
                                 if (searchFilter && !product.name.toLowerCase().includes(searchFilter.toLowerCase())) {
                                     return false;
@@ -101,10 +106,12 @@
                                         container.appendChild(img);
     
                                     })
-
-                                    for (let i = 0; i < filteredData.length; i++) {
+                                
+                                
+                                    for (let j = 0; j < 3; j++) {
                                         const product = filteredData[i];
                                         const productElement = document.createElement('div');
+                                        productElement.className = 'product'; //new changes
 
                                         productElement.innerHTML = `
                                             <h3>${product.name}</h3>
@@ -113,17 +120,25 @@
                                             <p>Price: $${product.price}</p>`;
                                         productsContainer.appendChild(productElement);
                                     }
-                                }    
+                                }
+                                   
+                                
+                                   
                             }       
                             if (categoryFilter === 'category2') {
-                                const product = filteredData[0];
-                                const productElement = document.createElement('div');
-                                productElement.innerHTML = `
-                                    <h3>${product.name}</h3>
-                                    <p>Type: ${product.type}</p>
-                                    <p>Description: ${product.description}</p>
-                                    <p>Price: $${product.price}</p>`;
-                                productsContainer.appendChild(productElement);
+                                for (let j = 0; j < 3; j++) {
+                                    const product = filteredData[0];
+                                    const productElement = document.createElement('div');
+                                    productElement.className = 'product';
+
+                            
+                                    productElement.innerHTML = `
+                                        <h3>${product.name}</h3>
+                                        <p>Type: ${product.type}</p>
+                                        <p>Description: ${product.description}</p>
+                                        <p>Price: $${product.price}</p>`;
+                                    productsContainer.appendChild(productElement);
+                                }
                                 let links = filteredData[0].links;
 
                                 container.innerHTML = '';
@@ -135,14 +150,18 @@
                                 })
                             }
                             if (categoryFilter === 'category3') {
-                                const product = filteredData[2];
-                                const productElement = document.createElement('div');
-                                productElement.innerHTML = `
-                                    <h3>${product.name}</h3>
-                                    <p>Type: ${product.type}</p>
-                                    <p>Description: ${product.description}</p>
-                                    <p>Price: $${product.price}</p>`;
-                                productsContainer.appendChild(productElement);
+                                for (let j = 0; j < 3; j++) {
+                                    const product = filteredData[2];
+                                    const productElement = document.createElement('div');
+                                    productElement.className = 'product';
+
+                                    productElement.innerHTML = `
+                                        <h3>${product.name}</h3>
+                                        <p>Type: ${product.type}</p>
+                                        <p>Description: ${product.description}</p>
+                                        <p>Price: $${product.price}</p>`;
+                                    productsContainer.appendChild(productElement);
+                                }
                                 
                                 let links = filteredData[2].links;
                                 container.innerHTML = '';
@@ -153,14 +172,18 @@
                                 })
                             }
                             if (categoryFilter === 'category4') {
-                                const product = filteredData[1];
-                                const productElement = document.createElement('div');
-                                productElement.innerHTML = `
-                                    <h3>${product.name}</h3>
-                                    <p>Type: ${product.type}</p>
-                                    <p>Description: ${product.description}</p>
-                                    <p>Price: $${product.price}</p>`;
-                                productsContainer.appendChild(productElement);
+                                for (let j = 0; j < 3; j++) {
+                                    const product = filteredData[1];
+                                    const productElement = document.createElement('div');
+                                    productElement.className = 'product';
+                                    
+                                    productElement.innerHTML = `
+                                        <h3>${product.name}</h3>
+                                       <p>Type: ${product.type}</p>
+                                       <p>Description: ${product.description}</p>
+                                       <p>Price: $${product.price}</p>`;
+                                    productsContainer.appendChild(productElement);
+                                }
                                 let links = filteredData[1].links;
                                 container.innerHTML = '';
 
@@ -173,12 +196,17 @@
                         })
                         .catch(error => console.error('Error:', error));
 
+                    currentPage++; //infinite scroll
+
                     
                 }
     
-                updateResults();
+                updateResults(currentPage);
             
-                document.getElementById('filterRequestButton').addEventListener('click', updateResults);
+                document.getElementById('filterRequestButton').addEventListener('click', function(){
+                    updateResults(currentPage);
+                });
+
             
                 
             </script>

@@ -309,12 +309,54 @@ body{
     max-width: 200px;
     float: left;
     padding-right: 20px;
+    padding-bottom: 100%;
+    max-height: 100%;
 }
 
 #products-container{
-    float: left;
+    padding: 20%;
+    
+    padding-top: 20px;
+    
 }
 
 img{
+    position: relative;
     padding: 20px;
+    width: 350px;
+    height: 350px;
+    
 }
+
+
+
+#productIn_IMG{
+    display: flex;
+    position: relative;
+}
+
+
+.product{
+    position: relative;
+    top: 0;
+    opacity: 0;
+    
+    padding-bottom: 180px;
+    width: 300px;
+    padding-left: 0%;
+    left: -480px;
+    
+    
+    
+}
+
+
+#productIn_IMG .product:hover{
+    opacity: 1;
+   
+}
+
+
+
+
+
